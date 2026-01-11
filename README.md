@@ -73,6 +73,25 @@
 
 请参考 [`_workers_v2/README.md`](./_workers_v2/README.md) 使用 Wrangler 命令部署与配置。
 
+## 🐳 Docker 一般部署 (Docker Compose)
+
+如果你拥有自己的服务器（VPS/NAS），可以使用 Docker 一键部署：
+
+1.  克隆仓库：
+    ```bash
+    git clone https://github.com/chatgptuk/ldc-shop.git
+    cd ldc-shop
+    ```
+2.  修改 `docker-compose.yml` 中的环境变量：
+    - 此文件默认启动一个 PostgreSQL 数据库。
+    - 请务必修改 `OAUTH_CLIENT_ID`, `OAUTH_CLIENT_SECRET`, `MERCHANT_ID`, `MERCHANT_KEY` 等关键参数。
+3.  启动服务：
+    ```bash
+    docker-compose up -d
+    ```
+4.  访问 `http://localhost:3000` 即可使用。
+    - 数据库文件会持久化在当前目录的 `./postgres-data` 文件夹中。
+
 ## 🔄 如何启用自动更新 (Auto Update)
 
 如果你 Fork 了本项目，可以通过启用 GitHub Actions 来实现每天自动同步上游最新代码（并触发 Vercel 重部署）：

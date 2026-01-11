@@ -65,6 +65,25 @@ While the system supports active order status querying, for the best user experi
 
 The shared `vercel.app` domain is sometimes flagged by firewalls or payment gateways, which might delay or block payment callbacks. Using a custom domain avoids these issues.
 
+## 🐳 Docker Deployment (Docker Compose)
+
+If you have your own server (VPS/NAS), you can deploy simply with Docker:
+
+1.  Clone the repository:
+    ```bash
+    git clone https://github.com/chatgptuk/ldc-shop.git
+    cd ldc-shop
+    ```
+2.  Edit `docker-compose.yml` environment variables:
+    - This file starts a local PostgreSQL database by default.
+    - **Crucial**: Replace `OAUTH_CLIENT_ID`, `OAUTH_CLIENT_SECRET`, `MERCHANT_ID`, `MERCHANT_KEY` with your actual credentials.
+3.  Start the service:
+    ```bash
+    docker-compose up -d
+    ```
+4.  Visit `http://localhost:3000`.
+    - Database data is persisted in the local `./postgres-data` folder.
+
 ## 🔄 How to Enable Auto Update
 
 If you forked this project, you can enable GitHub Actions to automatically sync the latest code from upstream (triggering a Vercel redeploy):
